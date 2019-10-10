@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<package name="default" namespace="/" extends="struts-default">
+	
+	<interceptors>
+		<interceptor name = "loginInterceptor" class = "com.splitApp.interceptor.LoginInterceptor" />
+		<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+	</interceptors>
+			
+	<action name="*Link" method="{1}" class="com.splitApp.ui.LinkAction">
+		<result name="login">login/login.jsp</result>
+		<result name="home" type="chain">HomeAction</result>
+	</action>
+	
+	
+	<action name="SignupAction" class="com.splitApp.ui.SignupAction">
+			<result name="success">login/signUp.jsp</result>
+			<result name="error">login/login.jsp</result>
+			<result name="input">login/login.jsp</result>
+	</action>
+	
+	<action name="LoginAction" class="com.splitApp.ui.LoginAction">
+			<result name="success" type="chain">HomeAction</result>
+			<result name="error">login/login.jsp</result>
+			<result name="input">login/login.jsp</result>
+	</action>
+	
+	<action name="LogoutAction" class="com.splitApp.ui.LogoutAction">
+			<result name="success">login/login.jsp</result>
+			<result name="error"></result>
+			<result name="input"></result>
+	</action>
+	
+	
+	
+	<action name="HomeAction" class="com.splitApp.ui.HomeAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success">home/home.jsp</result>
+		<result name="error"></result>
+		<result name="input"></result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
+	
+	<action name="AddFriendAction" class="com.splitApp.ui.AddFriendAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success">home/addFriend.jsp</result>
+		<result name="error"></result>
+		<result name="input"></result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
+	<action name="ContectAction" class="com.splitApp.ui.ContectAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success">home/contUs.jsp</result>
+		<result name="error"></result>
+		<result name="input"></result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
+	<action name="AddNewFrienddAction" class="com.splitApp.ui.AddNewFriendAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success" type="chain">HomeAction</result>
+		<result name="error">home/addFriend.jsp</result>
+		<result name="input"></result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
+	<action name="AddNewFrienddAction" class="com.splitApp.ui.AddNewFriendAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success" type="chain">HomeAction</result>
+		<result name="error">home/addFriend.jsp</result>
+		<result name="input">home/addFriend.jsp</result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
+	<action name="AddMoneyAction" class="com.splitApp.ui.AddMoneyAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success" type="chain">HomeAction</result>
+		<result name="error"></result>
+		<result name="input"></result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
+	
+	<action name="SettelAccountAction" class="com.splitApp.ui.SettelAccountAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success" type="chain">HomeAction</result>
+		<result name="error"></result>
+		<result name="input"></result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
+	<action name="ActivityAction" class="com.splitApp.ui.ActivityAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success">home/activity.jsp</result>
+		<result name="error"></result>
+		<result name="input"></result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
+
+	</package>
+</struts>    

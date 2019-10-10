@@ -1,0 +1,97 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+    "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+    
+    
+    <validators>
+	<field name="phNo">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Phone No is required</message>
+		</field-validator>
+
+		<field-validator type="regex" short-circuit="true">
+			<param name="expression"><![CDATA[^[0-9]+$]]></param>
+			<message>Not a valid Phone No</message>
+		</field-validator>
+		
+		<field-validator type="stringlength">
+			<param name="minLength">10</param>
+			<param name="maxLength">10</param>
+			<param name="trim">true</param>
+			<message>Not a valid Phone No</message>
+		</field-validator>
+		
+	</field>
+
+	<field name="fName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>first Name is required</message>
+		</field-validator>
+
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[^\d+$|^[A-Za-z\.\-\' ]+$]]></param>
+			<message>Special characters are not allowed in First Name</message>
+		</field-validator>
+	</field>
+	
+	<field name="lName">
+	
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[^\d+$|^[A-Za-z\.\-\' ]+$]]></param>
+			<message>Special characters are not allowed in Last Name</message>
+		</field-validator>
+	</field>	
+	
+	
+	<field name="pass">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Password is required</message>
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">8</param>
+			<param name="trim">true</param>
+			<message>Password  must contain at least eight characters</message>
+		</field-validator>
+		
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[(?=.*?[!@#$%^&])(?=.*?[A-Z])(?:([a-zA-Z0-9!@#$%^&])(?!.*?\1.*?\1)){8,20}$]]></param>
+			<message>Password should be of eight characters alphanumeric and must contain atleast one special character and one Uppercase letter</message>
+		</field-validator>
+	</field>	
+	
+	<field name="cnfPass">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Confirm New Password is required</message>
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">8</param>
+			<param name="trim">true</param>
+			<message>Confirm New Password  must contain at least eight characters</message>
+		</field-validator>
+		
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[(?=.*?[!@#$%^&])(?=.*?[A-Z])(?:([a-zA-Z0-9!@#$%^&])(?!.*?\1.*?\1)){8,20}$]]></param>
+			<message>Confirm New Password should be of eight characters alphanumeric and must contain atleast one special character and one Uppercase letter</message>
+		</field-validator>
+	</field>	
+	
+	<field name="email">
+	    
+	    <field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Email is required</message>
+		</field-validator>
+	    
+		<field-validator type="email">
+			<message>Not a valid Email</message>
+		</field-validator>
+	</field>
+
+	
+	
+	</validators>

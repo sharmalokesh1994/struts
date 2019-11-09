@@ -105,6 +105,24 @@
 		<result name="login">login/login.jsp</result>
 	</action>
 	
+	
+	<action name="AddGroupAction" class="com.splitApp.ui.AddGroupAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success">home/addGroup.jsp</result>
+		<result name="error"></result>
+		<result name="input"></result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
+	
+	<action name="AddFriendInGroupAction" class="com.splitApp.ui.AddFriendInGroupAction">
+		<interceptor-ref name="loginStack"></interceptor-ref>
+		<result name="success">home/home.jsp</result>
+		<result name="error"></result>
+		<result name="input"></result>
+		<result name="login">login/login.jsp</result>
+	</action>
+	
 
 	</package>
 </struts>    

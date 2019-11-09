@@ -1,5 +1,6 @@
 package com.splitApp.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,8 +22,24 @@ public class ActivityAction extends ActionSupport implements SessionAware{
 	public String execute(){
 	
 		try{
+			
+			List<ActivityEntity> activities1 = new ArrayList<>();
+			
 			String phNo = (String) sessionMap.get("phNo");
-			activities = (List<ActivityEntity>)UniversalDaoImpl.retrieveValueByField(ActivityEntity.class, "selfPhNo", phNo);
+			List<Object[]> list = (List<Object[]>)UniversalDaoImpl.retrieveActivityList(phNo);
+			
+			//activities
+			
+			list.forEach((l)->{
+				activities1.add((ActivityEntity)l[0]);
+			});
+			
+			activities = activities1;
+			
+			System.out.println(activities.get(0).getDescrition());
+			
+			
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}

@@ -161,6 +161,11 @@ function closeForm() {
 				<li class="nav-item"><a class="nav-link" href="ContectAction">Contact
 						Us</a></li>
 			</ul>
+			
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="AddGroupAction">Add New
+						Group</a></li>
+			</ul>
 
 		</div>
 

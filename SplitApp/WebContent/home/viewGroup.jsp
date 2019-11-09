@@ -11,7 +11,7 @@ response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>LocHome|Home</title>
+<title>LocHome|ViewGoup</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -166,7 +166,6 @@ function closeForm() {
 				<li class="nav-item"><a class="nav-link" href="AddGroupAction">Add New
 						Group</a></li>
 			</ul>
-			
 
 		</div>
 
@@ -185,9 +184,9 @@ function closeForm() {
 
 
 <div class="form-popup" id="myForm">
-  <form action="AddMoneyAction" class="form-container">
+  <form action="AddMoneyInGroupAction" class="form-container">
 
-	<label><b>Friends Phone No</b></label>
+	<label><b>Group ID</b></label>
     <input id = "output" type="text" name="friendPhNo" readonly>
 	
     <label for="Description"><b>Description</b></label>
@@ -197,9 +196,7 @@ function closeForm() {
     <input type="text" placeholder="Enter money" name="money" required>
 
     <label><b>Paid By you</b></label>
-	<input type="radio" name="paid" value="self" checked> <br>
-	<label><b>Paid By your Friend</b></label>
-	<input type="radio" name="paid" value="friend"> <br>
+	<input type="text" name="paid" placeholder="Enter Phone Number" required> <br>
 	
 	<button type="submit" class="btn">add</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
@@ -209,7 +206,7 @@ function closeForm() {
 
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>Welcome on ActivityPage</h1>
+			<h1>Welcome on HomePage</h1>
 			<p>My App</p>
 		</div>
 	</div>
@@ -222,20 +219,16 @@ function closeForm() {
 				<tr>
 					
 					<th scope="col">Friend Phone No</th>
-					<th scope="col">Description</th>
+					<th scope="col">Add Money</th>
 					<th scope="col">Balance</th>
-					<th scope="col">Date</th>
 				</tr>
 			</thead>
 			<tbody>
-			<s:iterator value="activities" status="rowStatus" var="activitie">
+			<s:iterator value="friends" status="rowStatus" var="friend">
 				<tr>
-					<td><s:property value="#activitie.friendsEntityId.friendPhNo" /></td>
-					<td>
-						<s:property value="#activitie.descrition" />
-					</td>
-					<td><s:property value="#activitie.balance" /></td>
-					<td><s:property value="#activitie.date" /></td>
+					<td><s:property value="#friend.friendPhNo" /></td>
+					<td><button class="open-button">add</button></td>
+					<td><s:property value="#friend.balance" /></td>
 				</tr>
 
 			</s:iterator>

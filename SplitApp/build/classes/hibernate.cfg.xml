@@ -65,10 +65,12 @@
         <!-- Names the annotated entity class -->
         <!-- Here Model classes will be written -->
         
-        <mapping class="com.splitApp.dao.beans.UserEntity"/>
-        <mapping class="com.splitApp.dao.beans.FriendsEntity"/>  
-        <mapping class="com.splitApp.dao.beans.ActivityEntity"/>
         
+        <mapping class="com.splitApp.dao.beans.GroupEntity"/>
+         <mapping class="com.splitApp.dao.beans.UserEntity"/>
+        <mapping class="com.splitApp.dao.beans.FriendsEntity"/> 
+        <mapping class="com.splitApp.dao.beans.ActivityEntity"/>
+         <mapping class="com.splitApp.dao.beans.GroupFriendsEntity"/>
         
 
     </session-factory>

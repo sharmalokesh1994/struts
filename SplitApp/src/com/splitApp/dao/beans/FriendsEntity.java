@@ -18,9 +18,9 @@ public class FriendsEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="elementsId")
+	@Column(name="friendsEntityId")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer elementsId;
+	private Integer friendsEntityId;
 	
 	@Column(name="selfPhNo")
 	private String selfPhNo;
@@ -34,16 +34,26 @@ public class FriendsEntity implements Serializable{
 	
 	
 
-	public int getElementsId() {
+	/*public int getElementsId() {
 		return elementsId;
 	}
 
 	public void setElementsId(int elementsId) {
 		this.elementsId = elementsId;
 	}
-
+*/
+	
+	
 	public String getSelfPhNo() {
 		return selfPhNo;
+	}
+
+	public Integer getFriendsEntityId() {
+		return friendsEntityId;
+	}
+
+	public void setFriendsEntityId(Integer friendsEntityId) {
+		this.friendsEntityId = friendsEntityId;
 	}
 
 	public void setSelfPhNo(String selfPhNo) {

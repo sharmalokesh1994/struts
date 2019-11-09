@@ -50,6 +50,11 @@ response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
 				<li class="nav-item"><a class="nav-link" href="ContectAction">Contact
 						Us</a></li>
 			</ul>
+			
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="AddGroupAction">Add New
+						Group</a></li>
+			</ul>
 
 		</div>
 
@@ -62,6 +67,11 @@ response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
 	</nav>
 
 
+<div role="alert">
+		<s:if test="hasActionErrors()">
+			<s:actionerror />
+		</s:if>
+	</div>
 
 
 	<div class="jumbotron">
@@ -71,18 +81,10 @@ response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
 		</div>
 	</div>
 
-<div role="alert">
-		<s:if test="hasActionErrors()">
-			<s:actionerror />
-		</s:if>
-	</div>
-
 	<div class="container-fluid bg-3 text-center">
 		<h3>Add Friend</h3>
 		<br>
 
-	
-	
 		<form action="AddNewFrienddAction" class="form-container">
 
 			<label><b>Friend Phone No</b></label><br> <input type="text"

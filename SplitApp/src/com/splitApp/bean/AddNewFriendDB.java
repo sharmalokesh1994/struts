@@ -69,15 +69,15 @@ public class AddNewFriendDB {
 			activity1.setBalance(money);
 			activity1.setDate(new Date());
 			activity1.setDescrition(des);
-			activity1.setSelfPhNo(selfPhNo);
-			activity1.setFriendPhNo(friendPhNo);
+			activity1.setFriendsEntityId(friend);
 			
 			
 			activity2.setBalance(-money);
 			activity2.setDate(new Date());
 			activity2.setDescrition(des);
-			activity2.setSelfPhNo(friendPhNo);
-			activity2.setFriendPhNo(selfPhNo);
+			activity2.setFriendsEntityId(oppFriend);
+			
+			
 			uni.addObject(activity1);
 			uni.addObject(activity2);
 			 
@@ -121,15 +121,13 @@ public class AddNewFriendDB {
 			activity1.setBalance(0);
 			activity1.setDate(new Date());
 			activity1.setDescrition("Settle");
-			activity1.setSelfPhNo(selfPhNo);
-			activity1.setFriendPhNo(friendPhNo);
+			activity1.setFriendsEntityId(friend);
 			
 			
 			activity2.setBalance(0);
 			activity2.setDate(new Date());
 			activity2.setDescrition("Settle");
-			activity2.setSelfPhNo(friendPhNo);
-			activity2.setFriendPhNo(selfPhNo);
+			activity2.setFriendsEntityId(oppFriend);
 			uni.addObject(activity1);
 			uni.addObject(activity2);
 

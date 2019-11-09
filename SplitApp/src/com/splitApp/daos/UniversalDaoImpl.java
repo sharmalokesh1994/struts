@@ -3,6 +3,7 @@ package com.splitApp.daos;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -23,7 +24,7 @@ public class UniversalDaoImpl implements UniversalDao {
 		
 		try{
 			tx = sess.beginTransaction();
-			sess.save(object);
+			 sess.save(object);
 			tx.commit();
 			
 		}catch(Exception e){
@@ -32,7 +33,33 @@ public class UniversalDaoImpl implements UniversalDao {
 			}
 		}finally{
 			sess.close();
-		}		
+		}
+		
+		
+	}
+	
+	
+	public int addGroup(Object object) {
+		// TODO Auto-generated method stub
+		int t=0;
+		Session sess = HibernateUtil.getSessionFactory().openSession();
+		
+		Transaction tx = null;
+		
+		try{
+			tx = sess.beginTransaction();
+			t = (int) sess.save(object);
+			tx.commit();
+			
+		}catch(Exception e){
+			if(tx!=null ){
+				tx.rollback();
+			}
+		}finally{
+			sess.close();
+		}
+		
+		return t;
 	}
 	
 	@SuppressWarnings("all")
@@ -66,6 +93,32 @@ public class UniversalDaoImpl implements UniversalDao {
 			Criteria criteria = session.createCriteria(classObject);
 			criteria.add(Restrictions.eq(propertyName, propertyValue));
 			list = criteria.list();
+			
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		
+		return list;
+	}
+	
+	
+	@SuppressWarnings("all")
+	public static List retrieveActivityList(String propertyValue){
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		List list = null;
+		
+		try{
+//			Criteria criteria = session.createCriteria(classObject);
+//			criteria.add(Restrictions.eq(propertyName, propertyValue));
+			
+			
+			Query query = session.createQuery("from ActivityEntity act inner join act.friendsEntityId where act.friendsEntityId.selfPhNo = :selfPhNo");
+			query.setParameter("selfPhNo", propertyValue);
+			
+			list = query.list();	
+
 			
 		}catch(Exception e){
 			System.out.println(e);

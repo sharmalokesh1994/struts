@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.splitApp.appProperty.AppConstants;
@@ -19,15 +22,15 @@ public class ActivityEntity implements Serializable{
 private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="elementsId")
+	@Column(name="activityEntityId")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer elementsId;
+	private Integer activityEntityId;
 	
-	@Column(name="selfPhNo")
-	private String selfPhNo;
 	
-	@Column(name="friendPhNo")
-	private String friendPhNo;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="friendsEntityId")
+	private FriendsEntity friendsEntityId;
+	
 	
 	@Column(name="balance")
 	private Integer balance;
@@ -38,28 +41,21 @@ private static final long serialVersionUID = 1L;
 	@Column(name="date")
 	private Date date;
 
-	public Integer getElementsId() {
-		return elementsId;
+
+	public Integer getActivityEntityId() {
+		return activityEntityId;
 	}
 
-	public void setElementsId(Integer elementsId) {
-		this.elementsId = elementsId;
+	public void setActivityEntityId(Integer activityEntityId) {
+		this.activityEntityId = activityEntityId;
 	}
 
-	public String getSelfPhNo() {
-		return selfPhNo;
+	public FriendsEntity getFriendsEntityId() {
+		return friendsEntityId;
 	}
 
-	public void setSelfPhNo(String selfPhNo) {
-		this.selfPhNo = selfPhNo;
-	}
-
-	public String getFriendPhNo() {
-		return friendPhNo;
-	}
-
-	public void setFriendPhNo(String friendPhNo) {
-		this.friendPhNo = friendPhNo;
+	public void setFriendsEntityId(FriendsEntity friendsEntityId) {
+		this.friendsEntityId = friendsEntityId;
 	}
 
 	public Integer getBalance() {
@@ -95,9 +91,8 @@ private static final long serialVersionUID = 1L;
 		int result = 1;
 		result = prime * result + ((balance == null) ? 0 : balance.hashCode());
 		result = prime * result + ((descrition == null) ? 0 : descrition.hashCode());
-		result = prime * result + ((elementsId == null) ? 0 : elementsId.hashCode());
-		result = prime * result + ((friendPhNo == null) ? 0 : friendPhNo.hashCode());
-		result = prime * result + ((selfPhNo == null) ? 0 : selfPhNo.hashCode());
+		result = prime * result + ((activityEntityId == null) ? 0 : activityEntityId.hashCode());
+		result = prime * result + ((friendsEntityId == null) ? 0 : friendsEntityId.hashCode());
 		return result;
 	}
 
@@ -120,27 +115,22 @@ private static final long serialVersionUID = 1L;
 				return false;
 		} else if (!descrition.equals(other.descrition))
 			return false;
-		if (elementsId == null) {
-			if (other.elementsId != null)
+		if (activityEntityId == null) {
+			if (other.activityEntityId != null)
 				return false;
-		} else if (!elementsId.equals(other.elementsId))
+		} else if (!activityEntityId.equals(other.activityEntityId))
 			return false;
-		if (friendPhNo == null) {
-			if (other.friendPhNo != null)
+		if (friendsEntityId == null) {
+			if (other.friendsEntityId != null)
 				return false;
-		} else if (!friendPhNo.equals(other.friendPhNo))
-			return false;
-		if (selfPhNo == null) {
-			if (other.selfPhNo != null)
-				return false;
-		} else if (!selfPhNo.equals(other.selfPhNo))
+		} else if (!friendsEntityId.equals(other.friendsEntityId))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "ActivityEntity [elementsId=" + elementsId + ", selfPhNo=" + selfPhNo + ", friendPhNo=" + friendPhNo
+		return "ActivityEntity [activityEntityId=" + activityEntityId + ", friendsEntityId=" + friendsEntityId
 				+ ", balance=" + balance + ", descrition=" + descrition + "]";
 	}
 	
